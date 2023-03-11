@@ -1,0 +1,31 @@
+[package]
+name = "tcp-stream-utils"
+version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2021"
+description = "TcpStream Utils"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/tcp-stream-rs"
+homepage = "https://github.com/bk-rs/tcp-stream-rs"
+documentation = "https://docs.rs/tcp-stream-utils"
+keywords = []
+categories = []
+readme = "README.md"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+default = ["impl_tokio"]
+
+impl_tokio = ["tokio"]
+impl_async_io = ["async-io"]
+
+[dependencies]
+socket2 = { version = "0.5", default_features = false, features = ["all"] }
+
+tokio = { version = "1", default-features = false, features = ["net"], optional = true }
+async-io = { version = "1", default-features = false, optional = true }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
